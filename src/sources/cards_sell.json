@@ -1,0 +1,25 @@
+{"Cards":[
+    {
+        "id":1,
+        "img":"https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png",
+        "name":"SELL Card",
+        "description":"this is a test card",
+        "family":"not anymore",
+        "affinity":"water",
+        "energy":"not without coffee",
+        "hp":"150",
+        "price":"122"
+    },
+    {
+        "id":2,
+        "img":"https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png",
+        "name":"SELL Card2",
+        "description":"this is a test card",
+        "family":"not anymore",
+        "affinity":"water",
+        "energy":"not without coffee",
+        "hp":"150",
+        "price":"122"
+    }
+
+]}
