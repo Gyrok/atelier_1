@@ -52,8 +52,8 @@ export const UserForm=(props)=>{
             <Form.Input type="password" label="Pwd re-enter" placeholder="password" onChange={processInput}  name="pwdCheck"/>
         </Form.Field>
 
-        <Button type='submit' onClick={cancelOrder}>Cancel</Button>
-        <Button type='submit' onClick={submitOrder}>Submit</Button>
+        <Button type='submit' onClick={()=>cancelOrder()}>Cancel</Button>
+        <Button type='submit' onClick={()=>submitOrder()}>Submit</Button>
     </Form>
 
     )

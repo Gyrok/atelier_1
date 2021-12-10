@@ -8,26 +8,25 @@ function processInput(){
 
 function submitOrder(username,password){
     if(username !== "" && password !== ""){
-        console.log("c'est parti!");
-        const userId = fetch('localhost:8082/auth', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                login: username,
-                pwd: password,
-            })
+        let userId = "";
+        
+        
+        fetch('http://localhost:8082/auth?login='+username+'&pwd='+password, {
+            method: 'POST'
         })
+        .then(function (response) {
+            console.log(response);
+            return response.json();})
+        .then(  (data)=> {fetch('http://localhost:8082/user/'+userId)
+        .then(function (response) {
+            console.log(response);
+            return response.json();})
+        .then(data => console.log(data));});
+        
 
-        const user = fetch('localhost:8082/user/'+{userId}, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        })
+
+        
+        
     }
 
 }
