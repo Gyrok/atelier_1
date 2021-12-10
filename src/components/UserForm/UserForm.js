@@ -5,11 +5,30 @@ function processInput(){
 
 }
 
-function submitOrder(){
+function readJson () {
+    console.log(this)
+    
+    fetch('http://localhost:3000/Card',{
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            }
+         } )
+    .then((response) => response.json()).then(json => {
+        console.log(json);
+    }).catch(function () {
+        console.log("error");
+    })
+ }
 
+
+function submitOrder(){
+    console.log("hello")
+    readJson();
 }
 function cancelOrder(){
-
+    window.location.reload();
 }
 
 export const UserForm=(props)=>{
