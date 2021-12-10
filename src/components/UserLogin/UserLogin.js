@@ -1,12 +1,13 @@
 import React from 'react';
 import { Form, Header,Button } from 'semantic-ui-react'
+import * as userList from '../../sources/user.json';
 
 function processInput(){
 
 }
 
 function submitOrder(){
-
+    
 }
 
 function cancelOrder(){
@@ -29,9 +30,10 @@ export const UserLogin=(props)=>{
         </Form.Field>
 
 
-        <Button type='submit' onClick={cancelOrder}>Cancel</Button>
-        <Button type='submit' onClick={submitOrder}>Submit</Button>
+        <Button type='submit' onClick={cancelOrder} >Cancel</Button>
+        <Button type='submit' onClick={submitOrder} >Submit</Button>
     </Form>
+      
 
     )
 
