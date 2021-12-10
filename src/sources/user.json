@@ -1,12 +1,19 @@
 { 
     "users": [
     {
-        "username":"Joe",
-        "pwd":"1234"
+        "surname":"Joe",
+        "name":"mama",
+        "pwd":"1234",
+        "img":"'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'",
+        "money":"1234"
     },
     {
-        "username":"AD",
-        "pwd":"5678"
+        "surname":"AD",
+        "name":"AC",
+        "pwd":"5678",
+        "img":"'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'",
+        "money":"5678"
     }
+    
 
     ]}

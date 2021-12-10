@@ -2,15 +2,7 @@ import React from 'react';
 import {TopElement} from '../components/TopElement';
 import {BottomElement} from '../components/BottomElement';
 import { Grid, Segment } from 'semantic-ui-react'
-const User = {
-    id:12,
-    name:"John",
-    surname:"Doe",
-    pwd:"jdoepwd",
-    img:'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png',
-    money:1000,
 
-};
 
 
 export class Card extends React.Component {
@@ -20,6 +12,7 @@ export class Card extends React.Component {
         this.handleBuy=this.handleBuy.bind(this);
         this.handleSell=this.handleSell.bind(this);
         this.handlePlay =this.handlePlay.bind(this);
+        
       }
 
      
@@ -38,7 +31,14 @@ export class Card extends React.Component {
       return (
         <div>
 
-          <TopElement User={User} shopState={this.state.shopState}/>
+          <TopElement User={{
+          id:this.props.user.id,
+          name:this.props.user.name,
+          surname:this.props.user.surname,
+          img:this.props.user.img,
+          money:this.props.user.money,
+      
+      }} shopState={this.state.shopState}/>
 
         
         
