@@ -16,15 +16,15 @@ function submitOrder(username,password){
         })
         .then(function (response) {
             console.log(response);
-            return response.json();})
+            return response.json();}) // jusqu'ici ça marche (on récup bien le UID)
         .then(  (data)=> {fetch('http://localhost:8082/user/'+userId)
         .then(function (response) {
             console.log(response);
             return response.json();})
-        .then(data => console.log(data));});
+        .then(data => console.log(data));}); 
         
-
-
+        // TODO: fix le problème avec le CORS pour le get user
+        
         
         
     }
