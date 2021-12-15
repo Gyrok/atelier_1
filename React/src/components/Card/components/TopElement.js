@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Image, Icon } from 'semantic-ui-react'
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import { UserSmallDisplay } from '../../User/components/UserSmallDisplay';
 export const TopElement=(props)=> {

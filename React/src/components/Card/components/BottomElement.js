@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid, Segment } from 'semantic-ui-react';
 import {Account} from './bottomElementComponents/Account';
 import {MarketPlace} from './bottomElementComponents/MarketPlace';
 import * as cardsBuy from '../../../sources/cards_buy.json';

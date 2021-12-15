@@ -1,10 +1,6 @@
 import React, {useState } from 'react';
 import { Form, Header,Button } from 'semantic-ui-react'
-import * as userList from '../../sources/user.json';
 
-function processInput(){
-
-}
 
 function submitOrder(username,password){
     if(username !== "" && password !== ""){
@@ -12,7 +8,9 @@ function submitOrder(username,password){
         
         
         fetch('http://localhost:8082/auth?login='+username+'&pwd='+password, {
+            //mode: 'no-cors',
             method: 'POST'
+            
         })
         .then(function (response) {
             console.log(response);

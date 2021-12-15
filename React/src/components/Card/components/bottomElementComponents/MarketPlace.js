@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Icon, TableBody, Table, Grid } from 'semantic-ui-react';
+import { TableBody, Table, Grid } from 'semantic-ui-react';
 
 import { CardLineItem } from './components/CardLineItem';
 import { CardDetail } from './components/CardDetail';

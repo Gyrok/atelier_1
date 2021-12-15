@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Label, Menu, Table, TableBody } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 
 
 

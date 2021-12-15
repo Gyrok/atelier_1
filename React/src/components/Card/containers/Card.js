@@ -1,7 +1,7 @@
 import React from 'react';
 import {TopElement} from '../components/TopElement';
 import {BottomElement} from '../components/BottomElement';
-import { Grid, Segment } from 'semantic-ui-react'
+
 
 
 
