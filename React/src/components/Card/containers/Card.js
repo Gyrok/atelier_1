@@ -12,7 +12,7 @@ export class Card extends React.Component {
         this.handleSell=this.handleSell.bind(this);
         this.handlePlay =this.handlePlay.bind(this);
         
-        this.userID=6;  //props.userID;
+        this.userID=props.userId;
         this.user=this.callID();
         
       }
