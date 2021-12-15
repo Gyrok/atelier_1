@@ -12,10 +12,10 @@ import * as cardsSell from '../../../sources/cards_sell.json';
     
     switch (props.state.shopState) {  
         case 'BUY' :
-            
+            console.log("cartes",props.cardsID)
             return ( 
 
-                <MarketPlace stateMarket="BUY" cards={cardsBuy.default}/>
+                <MarketPlace stateMarket="BUY" cardsID={props.cardsID} cards={cardsBuy.default}/>
 
                 );
         case 'SELL':

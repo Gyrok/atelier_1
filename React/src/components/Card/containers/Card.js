@@ -22,7 +22,8 @@ export class Card extends React.Component {
 
      
     handleBuy(){
-            this.setState({shopState: "BUY"});
+        this.setState({shopState: "BUY"});
+            
 
     }
     handleSell(){
@@ -66,7 +67,7 @@ export class Card extends React.Component {
 
         
         
-          <BottomElement handleBuy={this.handleBuy} handleSell={this.handleSell}
+          <BottomElement cardsID={this.user.cardList} handleBuy={this.handleBuy} handleSell={this.handleSell}
           handlePlay={this.handlePlay} state={this.state}/>
         </div>
       );
