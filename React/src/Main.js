@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState } from 'react';
 import {UserForm} from './components/UserForm/UserForm'
 import {UserLogin} from './components/UserLogin/UserLogin'
 import {Card} from './components/Card/containers/Card'
@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Redirect
+  Navigate
 } from "react-router-dom";
 
 
@@ -24,7 +24,7 @@ export const Main =(props) =>{
     function loginUser(data)
     {
       console.log("TODO faire le login");
-      <Redirect  to="/card" />
+      <Navigate replace to="/card" />
     }
     
     return (
