@@ -21,7 +21,7 @@ export const UserForm=(props)=>{
     function submitOrder(Login,surname,lastname,password,pwdCheck){
         console.log("hello")
 
-        if(password == pwdCheck){
+        if(password === pwdCheck){
             fetch('http://localhost:8082/user',{
                 method: 'POST',
                 headers: {

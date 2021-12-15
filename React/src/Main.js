@@ -1,12 +1,11 @@
-import React, {useState } from 'react';
+import React from 'react';
 import {UserForm} from './components/UserForm/UserForm'
 import {UserLogin} from './components/UserLogin/UserLogin'
 import {Card} from './components/Card/containers/Card'
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  useNavigate
+  Route
 } from "react-router-dom";
 
 
@@ -17,17 +16,14 @@ import {
 //Create function component
 export const Main =(props) =>{
   
-  const [userId, setUserId] = useState("");
-  function submitUser(data)
-    {
-      console.log("TODO faire le submit");
-    }
+
+    var userId = "";
     function loginUser(data)
     {
     
       
-    setUserId(data);
-    
+    var userId = data;
+    console.log("user id after state change: ",userId);
     }
     
     return (
