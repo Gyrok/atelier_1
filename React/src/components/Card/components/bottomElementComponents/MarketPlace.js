@@ -8,8 +8,10 @@ export class MarketPlace extends React.Component {
     constructor(props) {
         super(props);
         this.state = {marketState : props.stateMarket,
-                    currentCard : ""};
-        this.cardID_liste=this.getCards();
+                    currentCard : "",
+                    cardList:[]
+                };
+        //this.cardList=this.getCards();;
         this.handleOnCardSelected=this.handleOnCardSelected.bind(this);
 
       }
@@ -18,64 +20,97 @@ export class MarketPlace extends React.Component {
             this.setState({currentCard : card});
       } 
 
-      getCardsRender(){
-        let array_render=[];
-        
-        for(var i=0;i<this.props.cards.Cards.length;i++){
+      getCardsRender2(){
+            let array_render=[];
             
-            array_render.push(
+            for(var i=0;i<this.listeCard.length;i++){
                 
-                <CardLineItem
-                   key={i}
-                   
-                   card={this.props.cards.Cards[i]}
-                   onClickHandler={this.handleOnCardSelected}
-                   
-                />
-                );
-        }
-        return array_render;
-    }
-
+                array_render.push(
+                    
+                    <CardLineItem
+                    key={i} 
+                    card={this.listeCard[i]}
+                    onClickHandler={this.handleOnCardSelected}
+                    />
+                    );
+            }
+            return array_render;
+            }
+    
+        async getCardsRender(){
+            let array_render=[];
+            
+            for(var i=0;i<this.props.cards.Cards.length ;i++){
+                
+                array_render.push(
+                    
+                    <CardLineItem
+                    key={i} 
+                    card={this.props.cards.Cards[i]}
+                    onClickHandler={this.handleOnCardSelected}
+                    />
+                    );
+            }
+            return array_render;
+            }
+  
     recup_card(cardID){
         fetch('http://localhost:8082/card/'+cardID,{ method: 'GET'})
         .then(response => response.json() )
         .then(responseData => {
-          
-          console.log("id",responseData.id);
-          
-          //this.user=response;
-          return responseData;
-        })
+            return responseData;})
         .catch(function () {
           console.log("error");
         });
     }
 
     getCards(){
-        let cardList=[];
-        console.log(this.props.cardsID)
+        let arrayCard=[];
+        console.log("Bonsoir",this.props.cardsID)
         for(var i=0;i<this.props.cardsID.length;i++){
-            
-            cardList.push(
-                
-                this.recup_card(this.props.cardsID[i])
-                );
+               const test =  this.recup_card(this.props.cardsID[i]);
+               arrayCard.push(test);
         }
-        return cardList;
+        return arrayCard;
     }
 
-        display_list = this.getCardsRender();
-        
-        
+    display_list = this.getCardsRender(); 
+    listeCard = this.getCards();
+    display_list2 = this.getCardsRender2(); 
 
-        render() {  
-            console.log(this.cardID_liste)             
-            return (
+    render() {  
 
-            <Grid divided="vertically">
-                <Grid.Row columns={3}>
-                <Grid.Column>
+        //this.cardList=[];
+        //this.getCards();
+        //this.setState({display_list2:this.getCardsList()});
+        console.log("cardList",this.cardList);
+       
+        return (
+
+        <Grid divided="vertically">
+            <Grid.Row columns={3}>
+            <Grid.Column>
+            <Table celled>
+
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>Name</Table.HeaderCell>
+                        <Table.HeaderCell>Description</Table.HeaderCell>
+                        <Table.HeaderCell>Family</Table.HeaderCell>
+                        <Table.HeaderCell>Affinity</Table.HeaderCell>
+                        <Table.HeaderCell>Energy</Table.HeaderCell>
+                        <Table.HeaderCell>HP</Table.HeaderCell>
+                        <Table.HeaderCell>Price</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+
+                <TableBody>   
+                    {this.display_list}
+                </TableBody>
+
+            </Table>
+            </Grid.Column>
+            <Grid.Column>
                 <Table celled>
 
                     <Table.Header>
@@ -91,35 +126,16 @@ export class MarketPlace extends React.Component {
                     </Table.Header>
 
                     <TableBody>   
-                        {this.display_list}
-                        
+                    {this.display_list2}
                     </TableBody>
 
                 </Table>
-                </Grid.Column>
-                <Grid.Column>
-                <Table celled>
-
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>Name</Table.HeaderCell>
-                                <Table.HeaderCell>Description</Table.HeaderCell>
-                                <Table.HeaderCell>Family</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-
-                        <TableBody>   
-                            {this.cardID}
-                            
-                        </TableBody>
-
-                        </Table>
-                </Grid.Column>
-                <Grid.Column>
-                    <CardDetail   marketState={this.state.marketState} card={this.state.currentCard} />
-                </Grid.Column>
-                </Grid.Row>
-            </Grid>
+            </Grid.Column>
+            <Grid.Column>
+                <CardDetail   marketState={this.state.marketState} card={this.state.currentCard} />
+            </Grid.Column>
+            </Grid.Row>
+        </Grid>
         )
 
     }

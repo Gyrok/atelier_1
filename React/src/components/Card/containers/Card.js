@@ -12,7 +12,7 @@ export class Card extends React.Component {
         this.handleSell=this.handleSell.bind(this);
         this.handlePlay =this.handlePlay.bind(this);
         
-        this.userID=6;  //props.userID;
+        this.userID=6 //props.userId;
         this.user=this.callID();
         
       }
@@ -32,6 +32,7 @@ export class Card extends React.Component {
     
 
     async callID (){
+      console.log("id",this.userID)
         fetch('http://localhost:8082/user/'+this.userID,{ method: 'GET'})
         .then(response => response.json() )
         .then(response => {
@@ -48,7 +49,7 @@ export class Card extends React.Component {
     
 
     render() {
-     
+      
       return (
         <div>
 
