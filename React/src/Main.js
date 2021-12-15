@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  useNavigate
 } from "react-router-dom";
 
 
@@ -16,6 +16,7 @@ import {
 
 //Create function component
 export const Main =(props) =>{
+  
   const [userId, setUserId] = useState("");
   function submitUser(data)
     {
@@ -23,8 +24,8 @@ export const Main =(props) =>{
     }
     function loginUser(data)
     {
-      setUserId(data);
-      <Navigate replace to="/card" />
+    setUserId(data);
+    
     }
     
     return (

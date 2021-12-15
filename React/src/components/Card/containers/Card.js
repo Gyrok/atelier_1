@@ -19,7 +19,7 @@ export class Card extends React.Component {
 
      
     handleBuy(){
-            this.setState({shopState: "BUY"});
+        this.setState({shopState: "BUY"});
     }
     handleSell(){
         this.setState({shopState: "SELL"});
@@ -29,7 +29,7 @@ export class Card extends React.Component {
     }
      
     render() { 
-
+      // FAIRE REQUETE
       return (
         <div>
 

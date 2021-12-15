@@ -1,10 +1,13 @@
 import React, {useState } from 'react';
 import { Form, Header,Button } from 'semantic-ui-react'
+import {
+    useNavigate
+  } from "react-router-dom";
 
 export const UserLogin=(props)=>{
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
     
 function updateUid(data){
     let userId = data.id;
@@ -16,33 +19,35 @@ function updateUid(data){
 function submitOrder(username,password){
     console.log(username);
     console.log(password);
-
-    if(username !== "" && password !== ""){
-        let userId = "";
-        const url1 = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
-        console.log(url1);
-        fetch(url1, {
-            method: 'POST'
-            
-        })
-        .then(function (response) {
-            return response.json();
-        })
-        .then(
-            (data)=> {fetch('http://localhost:8082/user/'+data)
-
-        .then(function (response) {
-            return response.json();})
-        .then((data) => {
-            updateUid(data);
-        });
-    }); 
-            
+    
+    async function makeRequest(){
+        if(username !== "" && password !== ""){
+            const url1 = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
+            console.log(url1);
+            fetch(url1, {
+                method: 'POST'
                 
-            
-            
-            
+            })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(
+                (data)=> {fetch('http://localhost:8082/user/'+data)
+
+            .then(function (response) {
+                return response.json();})
+            .then((data) => {
+                updateUid(data);
+                
+            });
+        }); 
+                
         }
+    await makeRequest();
+    navigate("/card", { replace: true });
+            
+            
+    }
 
     }
 
