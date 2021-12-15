@@ -19,9 +19,9 @@ export const TopElement=(props)=> {
 
                     <Grid.Column floated='right'>
                         <UserSmallDisplay 
-                                surname={props.user.surname}
-                                name={props.user.name}
-                                img={props.user.img}>
+                                surname={props.User.surname}
+                                name={props.User.name}
+                                img={props.User.img}>
                         </UserSmallDisplay>
                     </Grid.Column>
                     

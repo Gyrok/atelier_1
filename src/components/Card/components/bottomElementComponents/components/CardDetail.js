@@ -7,7 +7,7 @@ export const CardDetail = (props) => {
     const marketState = props.marketState;
 
     function handleClick(){
-
+        
     }
     
     return (

@@ -7,17 +7,20 @@ function processInput(){
 }
 
 function submitOrder(username,password){
+    console.log(username);
+    console.log(password);
+
     if(username !== "" && password !== ""){
         let userId = "";
-        
-        
-        fetch('http://localhost:8082/auth?login='+username+'&pwd='+password, {
+        const url1 = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
+        console.log(url1);
+        fetch(url1, {
             method: 'POST'
         })
         .then(function (response) {
             console.log(response);
             return response.json();})
-        .then(  (data)=> {fetch('http://localhost:8082/user/'+userId)
+        .then(  (data)=> {fetch('http://localhost:8082/user/'+data)
         .then(function (response) {
             console.log(response);
             return response.json();})
