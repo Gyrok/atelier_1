@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Icon } from 'semantic-ui-react';
+import {  Image } from 'semantic-ui-react';
 
  export const UserSmallDisplay=(props) =>{
     return (

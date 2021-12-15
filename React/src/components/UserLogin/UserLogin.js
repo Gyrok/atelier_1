@@ -1,6 +1,17 @@
 import React, {useState } from 'react';
 import { Form, Header,Button } from 'semantic-ui-react'
 
+export const UserLogin=(props)=>{
+    const [username, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+
+    
+function updateUid(data){
+    let userId = data.id;
+    console.log("this is uid: "+userId);
+    props.userLogin(userId);
+    
+}
 
 function submitOrder(username,password){
     console.log(username);
@@ -15,31 +26,29 @@ function submitOrder(username,password){
             
         })
         .then(function (response) {
-            console.log(response);
-            return response.json();})
-        .then(  (data)=> {fetch('http://localhost:8082/user/'+data)
+            return response.json();
+        })
+        .then(
+            (data)=> {fetch('http://localhost:8082/user/'+data)
+
         .then(function (response) {
-            console.log(response);
             return response.json();})
-        .then(data => console.log(data));}); 
-        
-        // TODO: fix le problème avec le CORS pour le get user
-        
-        
-        
+        .then((data) => {
+            updateUid(data);
+        });
+    }); 
+            
+                
+            
+            
+            
+        }
+
     }
 
-}
+    function cancelOrder(){
 
-function cancelOrder(){
-
-}
-
-export const UserLogin=(props)=>{
-    const [username, setUserName] = useState("");
-    const [password, setPassword] = useState("");
-
-
+    }
     return(
         
         <Form>
