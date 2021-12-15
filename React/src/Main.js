@@ -23,7 +23,7 @@ export const Main =(props) =>{
     }
     function loginUser(data)
     {
-      console.log("TODO faire le login");
+      setUserId(data);
       <Navigate replace to="/card" />
     }
     
