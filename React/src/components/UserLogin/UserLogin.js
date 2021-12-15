@@ -20,7 +20,6 @@ function submitOrder(username,password){
     if(username !== "" && password !== ""){
         let userId = "";
         const url1 = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
-        console.log(url1);
         fetch(url1, {
             method: 'POST'
             
