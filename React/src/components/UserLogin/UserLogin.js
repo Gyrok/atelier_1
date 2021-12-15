@@ -6,6 +6,7 @@ export const UserLogin=(props)=>{
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
    
+    const navigate = useNavigate();
     
 function updateUid(data){
     let userId = data.id;
@@ -37,7 +38,7 @@ async function makeRequest(){
     }
 }
 
-function submitOrder(username,password){
+function submitOrder(){
     console.log(username);
     console.log(password);
     makeRequest();
@@ -51,10 +52,10 @@ function submitOrder(username,password){
     }
 
     
-    const Redirect = () => {
-        const navigate = useNavigate();
+    function Redirect(){
+        
         navigate("/card", { replace: true });
-        return <h1>IF HERE SOME1 F*CKED UP</h1>; 
+        //return <h1>IF HERE SOME1 F*CKED UP</h1>; 
     }
     
     return(
@@ -72,8 +73,8 @@ function submitOrder(username,password){
         </Form.Field>
 
 
-        <Button type='button' onClick={()=>cancelOrder()} >Cancel</Button>
-        <Button type='button' onClick={()=>submitOrder(username,password)} >Submit</Button>
+        <Button type='button' onClick={cancelOrder} >Cancel</Button>
+        <Button type='button' onClick={submitOrder} >Submit</Button>
     </Form>
       
 
