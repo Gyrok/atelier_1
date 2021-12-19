@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {TopElement} from './components/topElement/TopElement';
 import {BottomElement} from './components/bottomElement/BottomElement';
 
 
 
 export const CardShop=(props)=>{
-    
+    let user;
+    const [shopType, setShopType] = useState("Main page");
+    const [shopPhrase, setShopPhrase] = useState("choose what you want to do");
+
+    function updateShop(newType, newPhrase){
+      setShopType(newType);
+      setShopPhrase(newPhrase);
+    }
+
     function updateUser(data){
       user = data;
     }
@@ -19,20 +27,21 @@ export const CardShop=(props)=>{
           return response.json();})
 
       .then((data) => {
-          this.updateUser(data);
+          updateUser(data);
       });
     }
     
-    let user = getUserById();
+    getUserById();
+
     //'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'
     return (
       <div>
 
-        <TopElement user={user}/>
+        <TopElement user={user} shopType={shopType} shopPhrase={shopPhrase}/>
 
       
       
-        <BottomElement user={user}/>
+        <BottomElement user={user} updateShop={updateShop}/>
       </div>
     );
 }
