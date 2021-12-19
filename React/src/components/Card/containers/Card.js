@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React from 'react';
 import {TopElement} from '../components/TopElement';
 import {BottomElement} from '../components/BottomElement';
 
@@ -12,7 +12,7 @@ export class Card extends React.Component {
         this.handleSell=this.handleSell.bind(this);
         this.handlePlay =this.handlePlay.bind(this);
         
-        this.userID=6 //props.userId;
+        this.userId=6  //props.userId;
         this.user=this.callID();
         
       }
@@ -30,20 +30,20 @@ export class Card extends React.Component {
         this.setState({shopState: "PLAY"});
     }
     
-
+    updateUser(data){
+      this.user = data;
+    }
     async callID (){
-      console.log("id",this.userID)
-        fetch('http://localhost:8082/user/'+this.userID,{ method: 'GET'})
-        .then(response => response.json() )
-        .then(response => {
+      console.log("id dans card",this.userId)
+      await fetch(fetch('http://localhost:8082/user/'+this.userId)
+
+      .then(function (response) {
           
-          console.log("id",response.id);
-          console.log("lastName",response.lastName);
-          this.user=response;
-        })
-        .catch(function () {
-          console.log("error");
-        });
+          return response.json();})
+
+      .then((data) => {
+          this.updateUser(data);
+      }));
     }
     
     

@@ -1,42 +1,10 @@
 import React, {useState } from 'react';
 import { Form, Header,Button } from 'semantic-ui-react'
+import { useNavigate } from 'react-router-dom';
 
 
 
-function submitOrder(Login,surname,lastname,password,pwdCheck){
-    console.log("hello")
 
-    if(password == pwdCheck){
-        fetch('http://localhost:8082/user',{
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body : JSON.stringify({
-            login:Login,
-            surName:surname,
-            lastName: lastname,
-            pwd:password,
-            img:"'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'",
-            money:"5000",})
-            } )
-        .then(res => {
-            console.log(res);
-            console.log("Wellcome")
-            window.alert("Wellcome new player!")
-        }).catch(function () {
-            console.log("error");
-        })
-    }
-    else {
-        window.alert("Confirm your password")
-    }
-}
-
-function cancelOrder(){
-    window.location.reload();
-}
 
 export const UserForm=(props)=>{
     const [login, setLogin] = useState("");
@@ -45,6 +13,48 @@ export const UserForm=(props)=>{
     const [pwd, setPwd] = useState("");
     const [pwdCheck, setPwdCheck] = useState("");
     
+    const navigate = useNavigate();
+    function cancelOrder(){
+        window.location.reload();
+    }
+    
+    function submitOrder(Login,surname,lastname,password,pwdCheck){
+        console.log("hello")
+
+        if(password === pwdCheck){
+            fetch('http://localhost:8082/user',{
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body : JSON.stringify({
+                login:Login,
+                surName:surname,
+                lastName: lastname,
+                pwd:password,
+                img:"'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'",
+                money:"5000",})
+                } )
+            .then(res => {
+                console.log(res);
+                console.log("Wellcome")
+                window.alert("Wellcome new player!")
+            }).catch(function () {
+                console.log("error");
+            })
+        }
+        else {
+            window.alert("Confirm your password")
+        }
+
+        Redirect();
+    }
+    function Redirect(){
+        
+        navigate("/loginUser", { replace: true });
+        //return <h1>IF HERE SOME1 F*CKED UP</h1>; 
+    }
     return(
         
         <Form>

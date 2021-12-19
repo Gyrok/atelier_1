@@ -9,10 +9,11 @@ export class MarketPlace extends React.Component {
         super(props);
         this.state = {marketState : props.stateMarket,
                     currentCard : "",
-                    cardList:[]
                 };
-        //this.cardList=this.getCards();;
+        //this.cardList=this.getCards();
         this.handleOnCardSelected=this.handleOnCardSelected.bind(this);
+        this.listeIDCards=props.cardsID;
+        this.cardsList=[];
 
       }
 
@@ -20,24 +21,9 @@ export class MarketPlace extends React.Component {
             this.setState({currentCard : card});
       } 
 
-      getCardsRender2(){
-            let array_render=[];
-            
-            for(var i=0;i<this.listeCard.length;i++){
-                
-                array_render.push(
-                    
-                    <CardLineItem
-                    key={i} 
-                    card={this.listeCard[i]}
-                    onClickHandler={this.handleOnCardSelected}
-                    />
-                    );
-            }
-            return array_render;
-            }
+      
     
-        async getCardsRender(){
+        getCardsRender(){
             let array_render=[];
             
             for(var i=0;i<this.props.cards.Cards.length ;i++){
@@ -53,37 +39,71 @@ export class MarketPlace extends React.Component {
             }
             return array_render;
             }
-  
-    recup_card(cardID){
-        fetch('http://localhost:8082/card/'+cardID,{ method: 'GET'})
-        .then(response => response.json() )
-        .then(responseData => {
-            return responseData;})
-        .catch(function () {
-          console.log("error");
-        });
+
+
+    getCardsRender2(){
+        let array_render=[];
+        
+        for(var i=0;i<this.listeCard.length;i++){
+            
+            array_render.push(
+                
+                <CardLineItem
+                key={i} 
+                card={this.listeCard[i]}
+                onClickHandler={this.handleOnCardSelected}
+                />
+                );
+        }
+        return array_render;
     }
 
+
+    /******** cards backend *******/
+    recup_card(ID){
+        console.log("ID",ID);
+        fetch('http://localhost:8082/card/'+ID,{ method: 'GET'})
+        .then(response => response.json() )
+        .then(responseData => {
+            console.log("reponseData",responseData);
+            this.cardsList.push(responseData);
+            return responseData;
+
+        })
+        .catch(function () {
+          console.log("error");
+        })
+        //return responseData;
+    }
+    createArray(){
+        let arrayCard=[];
+    }
     getCards(){
         let arrayCard=[];
-        console.log("Bonsoir",this.props.cardsID)
-        for(var i=0;i<this.props.cardsID.length;i++){
-               const test =  this.recup_card(this.props.cardsID[i]);
-               arrayCard.push(test);
+        console.log("Bonsoir",this.listeIDCards)
+        for(var i=0;i<this.listeIDCards.length;i++){
+               const test =  this.recup_card(this.listeIDCards[i]);
+               console.log("TEST",test)
+               //arrayCard.push(test);
         }
+        console.log("Bonjoir",arrayCard);
         return arrayCard;
     }
 
     display_list = this.getCardsRender(); 
-    listeCard = this.getCards();
-    display_list2 = this.getCardsRender2(); 
 
+    //listeCard = this.getCards();
+    //display_list2 = this.getCardsRender2(); 
+    
     render() {  
 
         //this.cardList=[];
-        //this.getCards();
+        this.getCards();
         //this.setState({display_list2:this.getCardsList()});
-        console.log("cardList",this.cardList);
+        console.log("cardList",this.cardsList);
+        console.log("cardList",this.cardsList.name);
+
+        const oui =  this.mapList();
        
         return (
 
@@ -126,7 +146,7 @@ export class MarketPlace extends React.Component {
                     </Table.Header>
 
                     <TableBody>   
-                    {this.display_list2}
+                    
                     </TableBody>
 
                 </Table>
