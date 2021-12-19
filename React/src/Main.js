@@ -1,6 +1,6 @@
 import React from 'react';
 import {UserForm} from './components/UserForm/UserForm'
-import {UserLogin} from './components/UserLogin/UserLogin'
+import { Login } from './user/login/login'
 import {Card} from './components/Card/containers/Card'
 import {
   BrowserRouter as Router,
@@ -8,43 +8,31 @@ import {
   Route
 } from "react-router-dom";
 
-
-
-
-
-
 //Create function component
 export const Main =(props) =>{
   
 
-    var userId = "";
-    function loginUser(data)
+    var uid = "";
+
+    function login(data)
     {
-    
-      
-    var userId = data;
-    console.log("user id after state change: ",userId);
+      var uid = data;
+      console.log("user id after state change: ",uid);
     }
     
     return (
           <Router>
       
             <Routes>
-              <Route exact path="/" element ={<UserLogin userLogin={loginUser}/>}/>
+              <Route exact path="/" element ={<Login login={login}/>}/>
            
               <Route path="/addUser" element ={<UserForm />}/>
 
-              <Route path="/loginUser" element ={<UserLogin userLogin={loginUser}/>}/>
+              <Route path="/loginUser" element ={<Login login={login}/>}/>
 
-              <Route path="/card" element={<Card userId={userId}/>}/>
+              <Route path="/card" element={<Card uid={uid}/>}/>
 
             </Routes>
           </Router>
-
-    
-
-
-          
     );
-    
 }
