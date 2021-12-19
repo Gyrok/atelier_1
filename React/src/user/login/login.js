@@ -21,7 +21,7 @@ export const Login=(props)=>{
         if(username !== "" && password !== ""){
             const requestUrl = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
             try {
-                let request = await fetch(requestUrl, { method: 'POST' })
+                await fetch(requestUrl, { method: 'POST' })
                 .then(response => response.json())
                 .then(data => updateUid(data));
                 

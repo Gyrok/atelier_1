@@ -41,7 +41,7 @@ export const CardShop=(props)=>{
 
       
       
-        <BottomElement user={user} updateShop={updateShop}/>
+        <BottomElement user={user} updateShop={updateShop} shopType={shopType}/>
       </div>
     );
 }
