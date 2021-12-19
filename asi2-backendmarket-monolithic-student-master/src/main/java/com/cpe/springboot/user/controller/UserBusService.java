@@ -1,5 +1,11 @@
 package com.cpe.springboot.user.controller;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+
 import javax.jms.Message;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.cpe.springboot.common.tools.DTOMapper;
 import com.cpe.springboot.user.model.FuncType;
 import com.cpe.springboot.user.model.UserDTO;
+import com.cpe.springboot.user.model.UserModel;
 import com.cpe.springboot.user.model.UserShell;
 
 @Service
@@ -19,7 +26,7 @@ public class UserBusService {
 	UserService userService;
 	
 	 @Autowired
-	 JmsTemplate jmsTemplate;
+	 JmsTemplate jmsTemplate; 
 
 // -------------------- SEND
 	 
@@ -76,6 +83,32 @@ public class UserBusService {
  	 		userService.deleteUser(String.valueOf(user.getId()));;	
  		} 		
 	    }
-
+ 	
+ 	@JmsListener(destination = "User_Bus_Custom", containerFactory = "connectionFactory")
+ 	public void receiveMessageCustom (String str, Message msg) {
+ 		String[] arr = str.split(",");
+ 		List<ArrayList<String>> arr2 = new ArrayList<ArrayList<String>>();
+ 		for (String a: arr) {
+ 			ArrayList<String> temp = new ArrayList<String>();
+ 			for (String sub:a.split(":")) {
+ 				temp.add(sub);
+ 			}
+ 			arr2.add(temp);
+ 		}
+ 		System.out.println("arr2 : "+arr2);
+ 		// getting the user 		
+ 		int id = Integer.valueOf(arr2.get(0).get(1));
+ 		float val = Integer.valueOf(arr2.get(1).get(1));
+ 		UserModel res = new UserModel();
+ 		
+		for(UserModel uM: userService.getAllUsers()){
+			if (uM.getId().equals(id)) {
+				uM.setAccount(uM.getAccount()+val);
+				uM.setCardList(new HashSet<>());
+				res = uM;
+			}
+		}
+		userService.updateUser(res);
+ 	}
 
 }
