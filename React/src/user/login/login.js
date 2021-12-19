@@ -23,7 +23,7 @@ export const Login=(props)=>{
                 updateUid(data);
             }
             catch(e){
-                console.log(e);
+                console.log("error at login: "+e);
 
             }
         }

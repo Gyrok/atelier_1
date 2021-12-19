@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f175cdb-2caa-42c2-b3a8-12e5a9333036" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../React/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../React/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../React/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../React/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../React/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/components/UserLogin/UserLogin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/user/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/user/login/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../node_modules/.package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
