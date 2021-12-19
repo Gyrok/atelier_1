@@ -15,7 +15,7 @@ export const CardShop=(props)=>{
     }
 
     
-
+    console.log("current user is : "+user.lastName);
     //'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'
     return (
       <div>

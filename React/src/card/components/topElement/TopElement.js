@@ -3,9 +3,6 @@ import React from 'react';
 
 
 export const TopElement =(props) =>{
-  
-
-    console.log("user that is to be displayed:"+props.user.id); // the problem is that the user is passed before it actualises.
 
     return (
         <div className="ui clearing segment">
