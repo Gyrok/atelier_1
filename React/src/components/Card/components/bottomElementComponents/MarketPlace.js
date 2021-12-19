@@ -9,11 +9,13 @@ export class MarketPlace extends React.Component {
         super(props);
         this.state = {marketState : props.stateMarket,
                     currentCard : "",
+                    cardsLoad : false
                 };
-        //this.cardList=this.getCards();
+        
         this.handleOnCardSelected=this.handleOnCardSelected.bind(this);
         this.listeIDCards=props.cardsID;
         this.cardsList=[];
+        this.display_list2 = [];
 
       }
 
@@ -23,34 +25,16 @@ export class MarketPlace extends React.Component {
 
       
     
-        getCardsRender(){
-            let array_render=[];
-            
-            for(var i=0;i<this.props.cards.Cards.length ;i++){
-                
-                array_render.push(
-                    
-                    <CardLineItem
-                    key={i} 
-                    card={this.props.cards.Cards[i]}
-                    onClickHandler={this.handleOnCardSelected}
-                    />
-                    );
-            }
-            return array_render;
-            }
-
-
-    getCardsRender2(){
+    getCardsRender(){
         let array_render=[];
         
-        for(var i=0;i<this.listeCard.length;i++){
-            
+        for(var i=0;i<this.props.cards.Cards.length ;i++){
+            console.log(this.props.cards.Cards[i])
             array_render.push(
                 
                 <CardLineItem
                 key={i} 
-                card={this.listeCard[i]}
+                card={this.props.cards.Cards[i]}
                 onClickHandler={this.handleOnCardSelected}
                 />
                 );
@@ -59,6 +43,30 @@ export class MarketPlace extends React.Component {
     }
 
 
+    getCardsRender2(){
+        let array_render=[];
+        for(var i=0;i<this.cardsList.length ;i++){
+            console.log(this.cardsList[i])
+            array_render.push(
+                
+                <CardLineItem
+                key={i} 
+                card={this.cardsList[i]}
+                onClickHandler={this.handleOnCardSelected}
+                />
+                );
+        }
+        return array_render;
+    }
+
+    createButton(){
+        let array_render=[];
+        array_render.push(
+            <input type="button" value="Show Cards" ></input>
+        )
+                
+        return array_render;
+    }
     /******** cards backend *******/
     recup_card(ID){
         console.log("ID",ID);
@@ -67,44 +75,44 @@ export class MarketPlace extends React.Component {
         .then(responseData => {
             console.log("reponseData",responseData);
             this.cardsList.push(responseData);
-            return responseData;
-
         })
         .catch(function () {
           console.log("error");
         })
         //return responseData;
     }
-    createArray(){
-        let arrayCard=[];
-    }
-    getCards(){
-        let arrayCard=[];
+
+
+
+    async getCards(){
         console.log("Bonsoir",this.listeIDCards)
         for(var i=0;i<this.listeIDCards.length;i++){
-               const test =  this.recup_card(this.listeIDCards[i]);
-               console.log("TEST",test)
-               //arrayCard.push(test);
+               await this.recup_card(this.listeIDCards[i]);
         }
-        console.log("Bonjoir",arrayCard);
-        return arrayCard;
     }
 
     display_list = this.getCardsRender(); 
 
-    //listeCard = this.getCards();
-    //display_list2 = this.getCardsRender2(); 
+    
     
     render() {  
+        
+        if (!this.state.cardsLoad){
 
-        //this.cardList=[];
-        this.getCards();
-        //this.setState({display_list2:this.getCardsList()});
-        console.log("cardList",this.cardsList);
-        console.log("cardList",this.cardsList.name);
-
-        const oui =  this.mapList();
-       
+        
+            this.getCards();
+            console.log("coucou")
+            console.log("cardList",this.cardsList);
+            this.display_list2= this.createButton();
+            this.setState({cardsLoad : true});
+        }
+        else {
+            this.display_list2 = this.getCardsRender2();
+            //this.setState({display_list2:this.getCardsRender2()});
+            for(var i=0;i<this.cardsList.length;i++){
+                console.log("arrayPrint",this.cardsList[i].name);
+            }
+        }
         return (
 
         <Grid divided="vertically">
@@ -146,7 +154,7 @@ export class MarketPlace extends React.Component {
                     </Table.Header>
 
                     <TableBody>   
-                    
+                        {this.display_list2}
                     </TableBody>
 
                 </Table>
