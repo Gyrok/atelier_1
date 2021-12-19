@@ -9,15 +9,29 @@ export const BottomElement=(props) =>{
         props.updateShop(shopType,shopPhrase);
     }
 
+    async function getCardsToBuy(){
+        await fetch();
+
+        return cardsToBuy;
+    }
+
+
+    async function getCardsToSell(){
+        await fetch();
+            
+        return cardsToSell;
+    }
     switch (props.shopType) {  
           
         case 'BUY' :
+            let cardsToBuy = getCardsToBuy();
             return ( 
-                    <MarketPlace stateMarket={props.shopType} cards={props.user.cardList}/>
+                    <MarketPlace stateMarket={props.shopType} cardsToBuy={cardsToBuy}/>
                 );
         case 'SELL':
+            let cardsToSell = getCardsToSell();
             return ( 
-                    <MarketPlace stateMarket={props.shopType} cards={props.user.cardList}/>
+                    <MarketPlace stateMarket={props.shopType} cardsToSell={cardsToSell}/>
                 );
 
         default:

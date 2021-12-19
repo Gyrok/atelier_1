@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4f175cdb-2caa-42c2-b3a8-12e5a9333036" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../React/src/card/components/bottomElement/BottomElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/card/components/bottomElement/BottomElement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/card/components/bottomElement/components/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/card/components/bottomElement/components/Account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/card/components/bottomElement/components/MarketPlace.js" beforeDir="false" afterPath="$PROJECT_DIR$/../React/src/card/components/bottomElement/components/MarketPlace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../React/src/card/components/card/cardDetailled.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
