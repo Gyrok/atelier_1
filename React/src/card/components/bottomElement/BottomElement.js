@@ -5,10 +5,13 @@ import {Account} from"./components/Account";
 
 export const BottomElement =(props) =>{    
 
+    function updateShop(shopType, shopPhrase){
+        props.updateShop(shopType,shopPhrase);
+    }
+
     switch (props.shopType) {  
           
         case 'BUY' :
-            console.log("cartes",props.user.cardList)
             return ( 
 
                 <MarketPlace stateMarket={props.shopType} cards={props.user.cardList}/>
@@ -23,7 +26,7 @@ export const BottomElement =(props) =>{
 
         default:
             return ( 
-                <Account>changeShopState={props.updateShop}
+                <Account updateShop={updateShop}>
                 </Account>
                 );
         }      

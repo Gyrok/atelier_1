@@ -4,14 +4,19 @@ import { Grid, Segment } from 'semantic-ui-react'
  
 
  export const Account=(props)=> {
+
+    function updateShop(shopType, shopPhrase){
+        props.updateShop(shopType,shopPhrase);
+    }
+
     function handleBuy(){
-       props.updateShop("BUY","use your money to buy cards")
+       updateShop("BUY","use your money to buy cards");
     }
     function handleSell(){
-        props.updateShop("SELL","sell your cards to get money")
+        updateShop("SELL","sell your cards to get money");
      }
      function handlePlay(){
-        props.updateShop("PLAY","feature available soon TM")
+        updateShop("PLAY","feature available soon TM");
      }
     return ( 
         

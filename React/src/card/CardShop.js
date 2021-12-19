@@ -5,7 +5,7 @@ import {BottomElement} from './components/bottomElement/BottomElement';
 
 
 export const CardShop=(props)=>{
-    let user = {};
+    let user = props.user;
     let [shopType, setShopType] = useState("Main page");
     let [shopPhrase, setShopPhrase] = useState("choose what you want to do");
 
@@ -14,34 +14,15 @@ export const CardShop=(props)=>{
       setShopPhrase(newPhrase);
     }
 
-    function updateUser(data){
-      user = data;
-    }
-    async function getUserById(){
-      const requestUrl = 'http://localhost:8082/user/'+props.uid; // this fetch works the user object is correctly returned
-      console.log("in cardshop the user get url is:"+requestUrl);
-      await fetch(requestUrl)
-
-      .then(function (response) {
-          return response.json();})
-
-      .then((data) => {
-          updateUser(data);
-          
-      });
-    }
     
-    getUserById();
 
     //'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'
     return (
       <div>
 
         <TopElement user={user} shopType={shopType} shopPhrase={shopPhrase}/>
-
-      
       
         <BottomElement user={user} updateShop={updateShop} shopType={shopType}/>
       </div>
-    );
+    )
 }

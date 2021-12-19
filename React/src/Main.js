@@ -11,26 +11,40 @@ import {
 
 //Create function component
 export const Main =(props) =>{
-  
 
-  let [uid, setUid] = useState("");
-  
-  function updateuid(newuid){
-    
-    setUid(newuid);
-    
+  let [user, setUser] = useState({
+                                id: -5,
+                                login: "place holder",
+                                pwd: "12",
+                                account: 0.0,
+                                lastName: "placeholder",
+                                surName: "placeholder",
+                                email: "placeholder@placeholder.placeholder",
+                                cardList: [
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    5
+                                ]
+                            });
+
+
+  function updateuser(newuser){
+    setUser(newuser);
   }
+
     return (
           <Router>
       
             <Routes>
-              <Route exact path="/" element ={<Login updateuid={updateuid}/>}/>
+              <Route exact path="/" element ={<Login updateuser={updateuser}/>}/>
            
               <Route path="/addUser" element ={<Register />}/>
 
-              <Route path="/loginUser" element ={<Login updateuid={updateuid}/>}/>
+              <Route path="/loginUser" element ={<Login updateuser={updateuser}/>}/>
 
-              <Route path="/card" element={<CardShop uid={uid}/>}/>
+              <Route path="/card" element={<CardShop user={user}/>}/>
 
             </Routes>
           </Router>

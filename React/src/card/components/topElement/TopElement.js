@@ -25,5 +25,5 @@ export const TopElement =(props) =>{
             </div>
         </h3>
     </div>
-    );
+    )
 }

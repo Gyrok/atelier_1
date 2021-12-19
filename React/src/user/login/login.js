@@ -7,15 +7,6 @@ export const Login=(props)=>{
     const [password, setPassword] = useState("");
    
     const navigate = useNavigate();
-    
-    function updateUid(data){
-        let uid = data;
-        
-        if( uid !== -1){
-            props.updateuid(uid);
-            redirectCard();  
-        }
-    }
 
     async function makeRequest(){
         
@@ -23,8 +14,11 @@ export const Login=(props)=>{
         try {
             await fetch(requestUrl, { method: 'POST' })
             .then(response => response.json())
-            .then(data => updateUid(data));
-            
+            .then(data => {
+                if (data !== -1){
+                    getUserById(data);
+                }
+            });
         }
         catch(e){
             console.log("error at login: "+e);
@@ -33,6 +27,30 @@ export const Login=(props)=>{
     
     }
 
+    function updateUser(data){
+        props.updateuser(data);
+        redirectCard();  
+    }
+
+    async function getUserById(uid){
+        const requestUrl = 'http://localhost:8082/user/'+uid; // this fetch works the user object is correctly returned
+        console.log("in cardshop the user get url is:"+requestUrl);
+        try{
+            await fetch(requestUrl)
+
+            .then(function (response) {
+                return response.json();})
+
+            .then((data) => {
+                updateUser(data);
+            });
+        }
+        catch(e){
+            console.log("erreur récupération user: "+e)
+        }
+        
+    }
+      
     function submitOrder(){
         if(username !== "" && password !== ""){
             makeRequest();
