@@ -35,7 +35,7 @@ export const Register=(props)=>{
                     lastName: lastname,
                     pwd:pwd,
                     img:"'https://www.nicepng.com/png/full/982-9820051_heart-2352306885-deadpool-png.png'",
-                    money:"5000",})
+                    account:"5000",})
                 })
                 .then(res => {
                     console.log(res);

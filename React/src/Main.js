@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Register} from './user/register/Register'
 import { Login } from './user/login/Login'
-import {Card} from './components/Card/containers/Card'
+import {CardShop} from './card/CardShop'
 
 import {
   BrowserRouter as Router,
@@ -25,7 +25,7 @@ export const Main =(props) =>{
 
               <Route path="/loginUser" element ={<Login setUid={setUid}/>}/>
 
-              <Route path="/card" element={<Card uid={uid}/>}/>
+              <Route path="/card" element={<CardShop uid={uid}/>}/>
 
             </Routes>
           </Router>
