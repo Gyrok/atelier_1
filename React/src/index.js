@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 // import the created Main component
 import {Main} from './Main';
 //add Semantic UI import
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css'
 
 //Insert a <Main> component inside the <div id='root'/>
 // send the property title to the App component
