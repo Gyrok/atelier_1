@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {UserForm} from './components/UserForm/UserForm'
-import { Login } from './user/login/login'
+import { Login } from './user/login/Login'
 import {Card} from './components/Card/containers/Card'
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,23 +13,17 @@ import {
 export const Main =(props) =>{
   
 
-    var uid = "";
+  const [uid, setUid] = useState();
 
-    function login(data)
-    {
-      var uid = data;
-      console.log("user id after state change: ",uid);
-    }
-    
     return (
           <Router>
       
             <Routes>
-              <Route exact path="/" element ={<Login login={login}/>}/>
+              <Route exact path="/" element ={<Login setUid={setUid}/>}/>
            
               <Route path="/addUser" element ={<UserForm />}/>
 
-              <Route path="/loginUser" element ={<Login login={login}/>}/>
+              <Route path="/loginUser" element ={<Login setUid={setUid}/>}/>
 
               <Route path="/card" element={<Card uid={uid}/>}/>
 

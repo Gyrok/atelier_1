@@ -11,7 +11,7 @@ export const Login=(props)=>{
     function updateUid(data){
         let uid = data;
         console.log("this is uid: "+uid);
-        props.login(uid);
+        props.setUid(uid);
     }
 
     async function makeRequest(){
