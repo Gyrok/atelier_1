@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Register} from './user/register/Register'
-import { Login } from './user/login/Login'
+import { Login } from './user/login/login'
 import {CardShop} from './card/CardShop'
 
 import {
