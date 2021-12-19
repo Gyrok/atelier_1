@@ -11,16 +11,20 @@ export const Login=(props)=>{
     function updateUid(data){
         let uid = data;
         console.log("this is uid: "+uid);
-        props.setUid(uid);
+        if( uid !== -1){
+            props.updateuid(uid);
+            redirectCard();  
+        }
     }
 
     async function makeRequest(){
         if(username !== "" && password !== ""){
             const requestUrl = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
             try {
-                let request = await fetch(requestUrl, { method: 'POST' });
-                let data = await request.json();
-                updateUid(data);
+                let request = await fetch(requestUrl, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => updateUid(data));
+                
             }
             catch(e){
                 console.log("error at login: "+e);
@@ -31,7 +35,7 @@ export const Login=(props)=>{
 
     function submitOrder(){
         makeRequest();
-        redirectCard();    
+        
     }
     
     function redirectCard(){

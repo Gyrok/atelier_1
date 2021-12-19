@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-
+import {MarketPlace} from "./components/MarketPlace";
+import {Account} from"./components/Account";
 
 
 export const BottomElement =(props) =>{
@@ -15,16 +16,16 @@ export const BottomElement =(props) =>{
     switch (shopState) {  
           
         case 'BUY' :
-            console.log("cartes",props.cardsID)
+            console.log("cartes",props.user.cardList)
             return ( 
 
-                <MarketPlace stateMarket={shopState} cardsID={props.cardsID} cards={cardsBuy.default}/>
+                <MarketPlace stateMarket={shopState} cards={props.user.cardList}/>
 
                 );
         case 'SELL':
             return ( 
 
-                <MarketPlace stateMarket={shopState} cards={cardsSell.default}/>
+                <MarketPlace stateMarket={shopState} cards={props.user.cardList}/>
 
                 );
 

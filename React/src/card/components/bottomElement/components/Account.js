@@ -8,10 +8,10 @@ import { Grid, Segment } from 'semantic-ui-react'
        props.updateShop("BUY","use your money to buy cards")
     }
     function handleSell(){
-        rops.updateShop("SELL","sell your cards to get money")
+        props.updateShop("SELL","sell your cards to get money")
      }
      function handlePlay(){
-        rops.updateShop("PLAY","feature available soon TM")
+        props.updateShop("PLAY","feature available soon TM")
      }
     return ( 
         
