@@ -5,9 +5,9 @@ import {BottomElement} from './components/bottomElement/BottomElement';
 
 
 export const CardShop=(props)=>{
-    let user;
-    const [shopType, setShopType] = useState("Main page");
-    const [shopPhrase, setShopPhrase] = useState("choose what you want to do");
+    let user = {};
+    let [shopType, setShopType] = useState("Main page");
+    let [shopPhrase, setShopPhrase] = useState("choose what you want to do");
 
     function updateShop(newType, newPhrase){
       setShopType(newType);
@@ -18,9 +18,8 @@ export const CardShop=(props)=>{
       user = data;
     }
     async function getUserById(){
-
-      const requestUrl = 'http://localhost:8082/user/'+props.uid;
-
+      const requestUrl = 'http://localhost:8082/user/'+props.uid; // this fetch works the user object is correctly returned
+      console.log("in cardshop the user get url is:"+requestUrl);
       await fetch(requestUrl)
 
       .then(function (response) {
@@ -28,6 +27,7 @@ export const CardShop=(props)=>{
 
       .then((data) => {
           updateUser(data);
+          
       });
     }
     

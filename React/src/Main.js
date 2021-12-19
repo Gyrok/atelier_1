@@ -13,9 +13,12 @@ import {
 export const Main =(props) =>{
   
 
-  const [uid, setUid] = useState("");
+  let [uid, setUid] = useState("");
+  
   function updateuid(newuid){
+    
     setUid(newuid);
+    
   }
     return (
           <Router>

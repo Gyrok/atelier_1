@@ -10,7 +10,7 @@ export const Login=(props)=>{
     
     function updateUid(data){
         let uid = data;
-        console.log("this is uid: "+uid);
+        
         if( uid !== -1){
             props.updateuid(uid);
             redirectCard();  
@@ -18,24 +18,25 @@ export const Login=(props)=>{
     }
 
     async function makeRequest(){
-        if(username !== "" && password !== ""){
-            const requestUrl = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
-            try {
-                await fetch(requestUrl, { method: 'POST' })
-                .then(response => response.json())
-                .then(data => updateUid(data));
-                
-            }
-            catch(e){
-                console.log("error at login: "+e);
-
-            }
+        
+        const requestUrl = 'http://localhost:8082/auth?login='+username+"&pwd="+password;
+        try {
+            await fetch(requestUrl, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => updateUid(data));
+            
         }
+        catch(e){
+            console.log("error at login: "+e);
+
+        }
+    
     }
 
     function submitOrder(){
-        makeRequest();
-        
+        if(username !== "" && password !== ""){
+            makeRequest();
+        }
     }
     
     function redirectCard(){
