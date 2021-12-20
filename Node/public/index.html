@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat app</title>
+    <style>
+        #container {
+          width: 700px;
+          margin: 0 auto;
+        }
+        .chat-input {
+          width: 300px;
+          height: 35px;
+          border: solid 1px #444;
+        }
+        .chat-submit {
+          width: 50px;
+          height: 35px;
+          border: solid 1px #444;
+        }
+        .chat-window {
+          height: 300px;
+          width: 400px;
+        }
+        #chatSection {
+          float: left;
+          border: 1px grey solid;
+          border-radius: 10px;
+          padding: 10px;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>
+        This is a perfectly functional chat app
+      </h1>
+      <!-- Choosing sender and receiver-->
+      <input placeholder="input id" id="myId">
+      <button class="conencter" onclick=establishCo() >Establish connection</button>
+      <br>
+
+      <form id="receiverForm">
+        <label id="receiverPicked">Pick a receiver:</label>
+        <select name="receiverList" id="receiverList"></select>
+      </form>
+
+      <br>
+      <!-- Messages section-->
+      <div id="chatSection">
+        <div class="chat-window"></div>
+        <p id="messages">This is messages : </p>
+        <input placeholder="type here" id="text">
+        <button class="send" onclick=send()>Send</button>
+      </div>
+      <!-- end Message section-->
+    </div>
+
+    <div id="gameContainer">
+      <button onclick=createGame()>Create a game</button>
+
+      <input placeholder="room you wanna join" id="roomId">
+      <button class="send", onclick=joinGame()>Join this game</button>
+
+      <p>Prepared cards</p>
+      <li id="cardList" title ="Prepared cards ">
+      </li>
+    </div>
+
+    <button onclick=updateUser()>click to update user</button>
+
+
+
+
+    <script src="socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -106,6 +106,7 @@ public class UserModel implements Serializable {
 		card.setUser(this);
 	}
 
+	@SuppressWarnings("unused")
 	private boolean checkIfCard(CardModel c){
 		for(CardModel c_c: this.cardList){
 			if(c_c.getId()==c.getId()){
@@ -145,6 +146,12 @@ public class UserModel implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "UserModel [id=" + id + ", login=" + login + ", pwd=" + pwd + ", account=" + account + ", lastName="
+				+ lastName + ", surName=" + surName + ", email=" + email + ", cardList=" + cardList + "]";
 	}
 
 }
